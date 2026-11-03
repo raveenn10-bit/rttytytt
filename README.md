@@ -1,3 +1,1 @@
-# TONDEL E-Commerce
-
-Premium mobile shop e-commerce website built with Next.js, GSAP and WhatsApp checkout.
+# TONDEL E-Commerce\n\nPremium mobile-shop storefront built with Next.js, GSAP ScrollTrigger, scrollytelling and WhatsApp checkout.\n\n## Run locally\n\n```bash\nnpm install\nnpm run dev\n```\n\nOpen `http://localhost:3000`.\n
