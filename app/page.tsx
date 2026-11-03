@@ -413,7 +413,7 @@ export default function Home({ shopOnly = false }: { shopOnly?: boolean }) {
   const [cart, setCart] = useState<Record<string, number>>({});
   const filtered = useMemo(() => products.filter(p => (category === "All" || p.category === category) && p.name.toLowerCase().includes(search.toLowerCase())), [category, search]);
   const chat = (message: string) => `https://wa.me/${wa}?text=${encodeURIComponent(message)}`;
-  const choose = (c:string) => { setCategory(c); document.getElementById("shop")?.scrollIntoView({behavior:"smooth"}); };
+  const choose = (c:string) => { if(!shopOnly){window.location.href="/shop";return;} setCategory(c); document.getElementById("shop")?.scrollIntoView({behavior:"smooth"}); };
   const add = (name:string) => { setCart(v=>({...v,[name]:(v[name]||0)+1})); setCartOpen(true); };
   const cartItems = products.filter(p=>cart[p.name]).map(p=>({...p,qty:cart[p.name]}));
   const cartCount = Object.values(cart).reduce((a,b)=>a+b,0);
@@ -421,23 +421,38 @@ export default function Home({ shopOnly = false }: { shopOnly?: boolean }) {
   const checkout = chat(`Hi TONDEL, I would like to order:\n${cartItems.map(p=>`• ${p.name} x ${p.qty}`).join("\n")}\n\nPlease quote these items\nPlease confirm availability and final price.`);
   useEffect(()=>{
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    let cleanup=()=>{};
+    let cleanup=()=>{}; let cancelled=false;
     Promise.all([import("gsap"),import("gsap/ScrollTrigger")]).then(([g,s])=>{
-      const gsap=g.gsap, ScrollTrigger=s.ScrollTrigger; gsap.registerPlugin(ScrollTrigger);
+      if(cancelled)return; const gsap=g.gsap, ScrollTrigger=s.ScrollTrigger; gsap.registerPlugin(ScrollTrigger);
       const ctx=gsap.context(()=>{
         gsap.from(".hero-copy > *",{y:42,opacity:0,duration:.9,stagger:.1,ease:"power3.out"});
         gsap.from(".hero-visual",{x:70,opacity:0,scale:.94,duration:1.2,ease:"expo.out"});
         gsap.to(".orb",{y:-28,x:18,rotation:12,duration:3.2,repeat:-1,yoyo:true,ease:"sine.inOut"});
         gsap.to(".motion-progress",{scaleX:1,ease:"none",scrollTrigger:{trigger:"main",start:"top top",end:"bottom bottom",scrub:.2}});
-        gsap.utils.toArray<HTMLElement>(".product").forEach((el,i)=>gsap.from(el,{y:55,opacity:0,duration:.65,delay:(i%3)*.06,ease:"power3.out",scrollTrigger:{trigger:el,start:"top 88%"}}));
-        gsap.utils.toArray<HTMLElement>(".reveal").forEach(el=>gsap.from(el,{y:45,opacity:0,duration:.8,ease:"power3.out",scrollTrigger:{trigger:el,start:"top 85%"}}));
+        gsap.utils.toArray<HTMLElement>(".product").forEach((el,i)=>gsap.from(el,{y:55,opacity:0,duration:.65,delay:(i%3)*.06,ease:"power3.out",scrollTrigger:{trigger:el,start:"top 94%",toggleActions:"play reverse play reverse"}}));
+        gsap.utils.toArray<HTMLElement>(".catalog-group, .benefits > div, footer .footer-main > div").forEach(el=>gsap.from(el,{y:45,opacity:0,duration:.8,ease:"power3.out",scrollTrigger:{trigger:el,start:"top 95%",toggleActions:"play reverse play reverse"}}));
         gsap.utils.toArray<HTMLElement>(".story-step").forEach((step,i)=>ScrollTrigger.create({trigger:step,start:"top center",end:"bottom center",onEnter:()=>gsap.to(".story-device",{y:-i*18,rotation:i%2?3:-2,scale:1+i*.035,duration:.7,ease:"power3.out"}),onEnterBack:()=>gsap.to(".story-device",{y:-i*18,rotation:i%2?3:-2,scale:1+i*.035,duration:.7,ease:"power3.out"})}));
         gsap.to(".story-glow",{rotation:360,duration:16,repeat:-1,ease:"none"});
       },root);
       cleanup=()=>ctx.revert();
     });
-    return ()=>cleanup();
+    return ()=>{cancelled=true;cleanup();};
   },[]);
+  useEffect(()=>{
+    if(shopOnly || window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+    const timer=window.setInterval(()=>{
+      if(document.hidden)return;
+      root.current?.querySelectorAll<HTMLElement>(".catalog-group .product-grid").forEach(row=>{
+        if(row.matches(":hover") || row.contains(document.activeElement))return;
+        const bounds=row.getBoundingClientRect();
+        if(bounds.bottom<0 || bounds.top>window.innerHeight)return;
+        const limit=row.scrollWidth-row.clientWidth;
+        if(limit<=1)return;
+        row.scrollTo({left:row.scrollLeft>=limit-4?0:Math.min(limit,row.scrollLeft+row.clientWidth*.7),behavior:"smooth"});
+      });
+    },4500);
+    return ()=>window.clearInterval(timer);
+  },[shopOnly,category,search]);
   return <main ref={root} className={shopOnly ? "shop-page" : "home-page"}>
     <div className="motion-progress"/>
     <div className="topbar">Islandwide delivery across Sri Lanka <span>•</span> Easy WhatsApp ordering</div>
@@ -460,15 +475,15 @@ export default function Home({ shopOnly = false }: { shopOnly?: boolean }) {
       <div className="story-stage"><div className="story-glow"/><div className="story-device"><img src="/tondel-logo.png" alt="TONDEL"/><span>SMART SHOPPING</span><div><b>Fast</b><small>WhatsApp checkout</small></div></div></div>
     </section>
     <section className="shop" id="shop">
-      <div className="section-title"><div><p className="eyebrow">CURATED FOR YOU</p><h2>Explore 50 products</h2></div><label>⌕<input placeholder="Search products" value={search} onChange={e=>setSearch(e.target.value)}/></label></div>
-      <div className="filters">{categories.map(c=><button className={category===c?"active":""} onClick={()=>setCategory(c)} key={c}>{c}</button>)}</div>
-      {(shopOnly || category !== "All" || search ? ["Results"] : categories.slice(1)).map(group => { const groupItems = group === "Results" ? filtered : filtered.filter(p=>p.category===group); return <section className="catalog-group" key={group}><div className="group-heading"><h2>{group === "Results" ? "Products" : group}</h2><span>{groupItems.length} products</span></div><div className="product-grid">{groupItems.map(p=><article className="product" key={p.name}><div className="product-image"><span>{p.tag}</span><img src={p.image} alt={p.name} loading="lazy" onError={e=>{e.currentTarget.onerror=null;e.currentTarget.src="/tondel-logo.png";}}/></div><div className="product-info"><small>{p.category}</small><h3>{p.name}</h3><p className="price">Price on request</p><button className="add-cart" onClick={()=>add(p.name)}>Add to cart <b>＋</b></button><a className="quick-order" href={chat(`Hi TONDEL, I'm interested in ${p.name}. Please confirm price and availability.`)} target="_blank">Quick WhatsApp order ↗</a></div></article>)}</div></section>; })}
+      <div className="section-title"><div><p className="eyebrow">CURATED FOR YOU</p><h2>{shopOnly ? "Explore all products" : "Find your next upgrade"}</h2></div><label>⌕<input placeholder="Search products" value={search} onChange={e=>setSearch(e.target.value)}/></label></div>
+      <div className={shopOnly ? "filters" : "filters home-filter"}>{categories.map(c=><button className={category===c?"active":""} onClick={()=>setCategory(c)} key={c}>{c}</button>)}</div>
+      {(shopOnly || category !== "All" || search ? ["Results"] : ["Samsung Phones","Apple Phones","Tablets","Bluetooth Speakers"]).map(group => { const matches = group === "Results" ? filtered : filtered.filter(p=>p.category===group); const groupItems = shopOnly ? matches : matches.slice(0,5); return <section className="catalog-group" key={group}><div className="group-heading"><h2>{group === "Results" ? "Products" : group}</h2><div className="row-controls"><a href="/shop">View all →</a>{!shopOnly&&<><button aria-label="Previous products" onClick={e=>e.currentTarget.closest(".catalog-group")?.querySelector(".product-grid")?.scrollBy({left:-350,behavior:"smooth"})}>←</button><button aria-label="Next products" onClick={e=>e.currentTarget.closest(".catalog-group")?.querySelector(".product-grid")?.scrollBy({left:350,behavior:"smooth"})}>→</button></>}</div></div><div className="product-grid" tabIndex={0} aria-label={group+" products"}>{groupItems.map(p=><article className="product" key={p.name}><div className="product-image"><span>{p.tag}</span><img src={p.image} alt={p.name} loading="lazy" onError={e=>{e.currentTarget.onerror=null;e.currentTarget.src="/tondel-logo.png";}}/></div><div className="product-info"><small>{p.category}</small><h3>{p.name}</h3><p className="price">Price on request</p><button className="add-cart" onClick={()=>add(p.name)}>Add to cart <b>＋</b></button><a className="quick-order" href={chat(`Hi TONDEL, I'm interested in ${p.name}. Please confirm price and availability.`)} target="_blank">Quick WhatsApp order ↗</a></div></article>)}</div></section>; })}
       {!filtered.length&&<div className="empty">No matching products. Message us and we’ll help you find it.</div>}
     </section>
     <section className="promo"><div><p className="eyebrow">NEED HELP CHOOSING?</p><h2>Tell us what you need.<br/>We’ll find the right tech.</h2><p>Send your budget and requirements through WhatsApp for a quick, friendly recommendation.</p><a className="primary light" href={chat("Hi TONDEL, I need help choosing a product. My budget is: ")} target="_blank">Get a recommendation →</a></div><div className="promo-art"><div className="ring"/><img src="/tondel-logo.png" alt="TONDEL logo"/></div></section>
     <section className="about" id="about"><div><p className="eyebrow">ABOUT TONDEL</p><h2>Technology made simple.</h2></div><div><p>TONDEL is your trusted destination for electronics, smart gadgets and accessories. We make shopping easy with direct WhatsApp assistance and islandwide delivery across Sri Lanka.</p><div className="mini-grid"><div><b>✓</b><span><strong>Easy ordering</strong>Personal support on WhatsApp</span></div><div><b>✓</b><span><strong>Islandwide reach</strong>Delivery across Sri Lanka</span></div></div></div></section>
     <section className="benefits" id="support"><div><span>⌁</span><h3>Islandwide Delivery</h3><p>Convenient delivery to locations across Sri Lanka.</p></div><div><span>◇</span><h3>1-Month Warranty</h3><p>Warranty support for eligible products. Confirm coverage before purchase.</p></div><div><span>◌</span><h3>WhatsApp Support</h3><p>Product advice and ordering help from a real person.</p></div></section>
-    <footer><div className="footer-main"><div><img className="footer-logo" src="/tondel-logo.png" alt="TONDEL"/><p>Smartphones, electronics, gadgets and accessories—delivered islandwide.</p></div><div><h4>Quick links</h4><a href="#shop">Shop products</a><a href="#about">About TONDEL</a><a href="#support">Delivery & Warranty</a></div><div><h4>Contact</h4><a href="tel:+94777543984">077 754 3984</a><a href={chat("Hi TONDEL!")} target="_blank">Chat on WhatsApp</a><small>Address & email: to be updated</small></div></div><div className="footer-bottom"><span>© 2026 TONDEL. All rights reserved.</span><span>Smart Choices. Smarter Living.</span></div></footer>
+    <footer className="animated-footer"><div className="footer-main"><div><img className="footer-logo" src="/tondel-logo.png" alt="TONDEL"/><p>Smartphones, electronics, gadgets and accessories—delivered islandwide.</p></div><div><h4>Quick links</h4><a href="/shop">Shop all products</a><a href="/about">About TONDEL</a><a href="/delivery">Delivery & Warranty</a><a href="/contact">Contact us</a></div><div><h4>Contact</h4><a href="tel:+94777543984">077 754 3984</a><a href={chat("Hi TONDEL!")} target="_blank">Chat on WhatsApp</a><small>Islandwide delivery across Sri Lanka</small></div></div><div className="footer-bottom"><span>© 2026 TONDEL. All rights reserved.</span><a href="#top">Back to top ↑</a></div></footer>
     <a className="floating-wa" href={chat("Hi TONDEL, I would like to place an order.")} target="_blank">◔<span>Order on WhatsApp</span></a>
     {cartOpen&&<><button className="cart-backdrop" onClick={()=>setCartOpen(false)} aria-label="Close cart"/><aside className="cart-drawer"><div className="cart-head"><div><small>YOUR SHOPPING BAG</small><h2>{cartCount} {cartCount===1?"item":"items"}</h2></div><button onClick={()=>setCartOpen(false)}>×</button></div><div className="cart-list">{!cartItems.length?<div className="cart-empty"><b>Your bag is empty</b><p>Add something you love from our collection.</p><button onClick={()=>setCartOpen(false)}>Continue shopping</button></div>:cartItems.map(p=><div className="cart-row" key={p.name}><img src={p.image} alt=""/><div><strong>{p.name}</strong><small>Price on request</small><div className="qty"><button onClick={()=>setCart(v=>({...v,[p.name]:Math.max(0,p.qty-1)}))}>−</button><span>{p.qty}</span><button onClick={()=>setCart(v=>({...v,[p.name]:p.qty+1}))}>＋</button></div></div><b>Quote pending</b></div>)}</div>{cartItems.length>0&&<div className="cart-checkout"><div><span>Estimated total</span><b>Confirm on WhatsApp</b></div><p>Final price and stock will be confirmed on WhatsApp.</p><a href={checkout} target="_blank">Checkout on WhatsApp →</a><button onClick={()=>setCart({})}>Clear bag</button></div>}</aside></>}
   </main>;
