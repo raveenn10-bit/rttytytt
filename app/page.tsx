@@ -406,7 +406,7 @@ const products = [
 const categories = ["All", ...Array.from(new Set(products.map(p=>p.category)))];
 const wa = "94777543984";
 
-export default function Home() {
+export default function Home({ shopOnly = false }: { shopOnly?: boolean }) {
   const root = useRef<HTMLElement>(null);
   const [menu, setMenu] = useState(false), [category, setCategory] = useState("All"), [search, setSearch] = useState("");
   const [cartOpen, setCartOpen] = useState(false);
@@ -438,12 +438,12 @@ export default function Home() {
     });
     return ()=>cleanup();
   },[]);
-  return <main ref={root}>
+  return <main ref={root} className={shopOnly ? "shop-page" : "home-page"}>
     <div className="motion-progress"/>
     <div className="topbar">Islandwide delivery across Sri Lanka <span>•</span> Easy WhatsApp ordering</div>
     <header>
       <a className="brand" href="#top"><img src="/tondel-logo.png" alt="TONDEL"/></a>
-      <nav className={menu ? "open" : ""}>{[["Shop","shop"],["Categories","categories"],["About","about"],["Delivery & Warranty","support"]].map(x=><a key={x[0]} href={`#${x[1]}`} onClick={()=>setMenu(false)}>{x[0]}</a>)}</nav>
+      <nav className={menu ? "open" : ""}>{[["Home","/"],["Shop","/shop"],["About","/about"],["Delivery & Warranty","/delivery"],["Contact","/contact"]].map(x=><a key={x[0]} href={x[1]} onClick={()=>setMenu(false)}>{x[0]}</a>)}</nav>
       <div className="header-actions"><button className="cart-trigger" onClick={()=>setCartOpen(true)}>Bag <b>{cartCount}</b></button><a className="whatsapp-small" href={chat("Hi TONDEL, I would like to know about your products.")} target="_blank">WhatsApp</a><button className="menu" onClick={()=>setMenu(!menu)} aria-label="Toggle menu">{menu ? "×" : "☰"}</button></div>
     </header>
     <section className="hero" id="top">
@@ -462,7 +462,7 @@ export default function Home() {
     <section className="shop" id="shop">
       <div className="section-title"><div><p className="eyebrow">CURATED FOR YOU</p><h2>Explore 50 products</h2></div><label>⌕<input placeholder="Search products" value={search} onChange={e=>setSearch(e.target.value)}/></label></div>
       <div className="filters">{categories.map(c=><button className={category===c?"active":""} onClick={()=>setCategory(c)} key={c}>{c}</button>)}</div>
-      <div className="product-grid">{filtered.map(p=><article className="product" key={p.name}><div className="product-image"><span>{p.tag}</span><img src={p.image} alt={p.name}/></div><div className="product-info"><small>{p.category}</small><h3>{p.name}</h3><p className="price">Price on request</p><button className="add-cart" onClick={()=>add(p.name)}>Add to cart <b>＋</b></button><a className="quick-order" href={chat(`Hi TONDEL, I'm interested in ${p.name}. Please confirm price and availability.`)} target="_blank">Quick WhatsApp order ↗</a></div></article>)}</div>
+      {(shopOnly || category !== "All" || search ? ["Results"] : categories.slice(1)).map(group => { const groupItems = group === "Results" ? filtered : filtered.filter(p=>p.category===group); return <section className="catalog-group" key={group}><div className="group-heading"><h2>{group === "Results" ? "Products" : group}</h2><span>{groupItems.length} products</span></div><div className="product-grid">{groupItems.map(p=><article className="product" key={p.name}><div className="product-image"><span>{p.tag}</span><img src={p.image} alt={p.name} loading="lazy" onError={e=>{e.currentTarget.onerror=null;e.currentTarget.src="/tondel-logo.png";}}/></div><div className="product-info"><small>{p.category}</small><h3>{p.name}</h3><p className="price">Price on request</p><button className="add-cart" onClick={()=>add(p.name)}>Add to cart <b>＋</b></button><a className="quick-order" href={chat(`Hi TONDEL, I'm interested in ${p.name}. Please confirm price and availability.`)} target="_blank">Quick WhatsApp order ↗</a></div></article>)}</div></section>; })}
       {!filtered.length&&<div className="empty">No matching products. Message us and we’ll help you find it.</div>}
     </section>
     <section className="promo"><div><p className="eyebrow">NEED HELP CHOOSING?</p><h2>Tell us what you need.<br/>We’ll find the right tech.</h2><p>Send your budget and requirements through WhatsApp for a quick, friendly recommendation.</p><a className="primary light" href={chat("Hi TONDEL, I need help choosing a product. My budget is: ")} target="_blank">Get a recommendation →</a></div><div className="promo-art"><div className="ring"/><img src="/tondel-logo.png" alt="TONDEL logo"/></div></section>
