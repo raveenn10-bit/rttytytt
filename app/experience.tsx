@@ -1,0 +1,12 @@
+"use client";
+import {useEffect,useRef,useState} from "react";
+export default function Experience(){
+ const [dark,setDark]=useState(false),[open,setOpen]=useState(false),[message,setMessage]=useState("");
+ const close=useRef<HTMLButtonElement>(null),trigger=useRef<HTMLButtonElement>(null);
+ useEffect(()=>{try{const saved=localStorage.getItem("tondel-theme");const d=saved?saved==="dark":window.matchMedia("(prefers-color-scheme: dark)").matches;setDark(d);document.documentElement.dataset.theme=d?"dark":"light";}catch{}},[]);
+ useEffect(()=>{if(open)close.current?.focus();},[open]);
+ const dismiss=()=>{setOpen(false);trigger.current?.focus();};
+ return <><button className="theme-switch" aria-label={dark?"Switch to light mode":"Switch to dark mode"} aria-pressed={dark} onClick={()=>{const d=!dark;setDark(d);document.documentElement.dataset.theme=d?"dark":"light";try{localStorage.setItem("tondel-theme",d?"dark":"light");}catch{}}}>{dark?"☀ Light":"☾ Dark"}</button>
+ {open&&<section className="chat-panel" role="dialog" aria-label="Chat with TONDEL" onKeyDown={e=>{if(e.key==="Escape")dismiss();}}><div className="chat-title"><div><b>TONDEL support</b><small>Continue your conversation on WhatsApp</small></div><button ref={close} onClick={dismiss} aria-label="Close chat">×</button></div><div className="chat-body"><p>Hello! How can we help you find your next upgrade?</p><div className="chat-topics">{["Product availability","Delivery details","Payment options"].map(t=><button key={t} onClick={()=>setMessage("Hi TONDEL, I would like to ask about "+t.toLowerCase()+".")}>{t}</button>)}</div><label htmlFor="chat-message">Your message</label><textarea id="chat-message" value={message} onChange={e=>setMessage(e.target.value)} placeholder="Tell us what you’re looking for…" rows={3}/><a className="chat-send" target="_blank" rel="noopener noreferrer" href={"https://wa.me/94777543984?text="+encodeURIComponent(message.trim()||"Hi TONDEL, I need help choosing a product.")}>Continue on WhatsApp ↗</a><small>No message is sent until you send it in WhatsApp.</small></div></section>}
+ <button ref={trigger} className="chat-launch" onClick={()=>open?dismiss():setOpen(true)} aria-expanded={open}>◉ <span>{open?"Close chat":"Chat with TONDEL"}</span></button></>;
+}

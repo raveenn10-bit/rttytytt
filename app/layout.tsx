@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Experience from "./experience";
 
 export const metadata: Metadata = {
   title: "TONDEL | Smartphones, Gadgets & Accessories Sri Lanka",
@@ -17,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">{children}<Experience/></body>
     </html>
   );
 }
