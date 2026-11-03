@@ -2,14 +2,408 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 
 const products = [
-  { name: "iPhone 15 Pro", category: "Smartphones", price: 329900, image: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=900&q=85", tag: "Popular" },
-  { name: "Samsung Galaxy S24", category: "Smartphones", price: 249900, image: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=900&q=85", tag: "New" },
-  { name: "Apple AirPods Pro", category: "Audio", price: 69900, image: "https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?auto=format&fit=crop&w=900&q=85", tag: "Best seller" },
-  { name: "Smart Watch Series", category: "Wearables", price: 14900, image: "https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=900&q=85", tag: "Trending" },
-  { name: "Fast Charging Bundle", category: "Accessories", price: 5900, image: "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=900&q=85", tag: "Essential" },
-  { name: "Portable Bluetooth Speaker", category: "Audio", price: 8900, image: "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=900&q=85", tag: "Hot deal" },
+  {
+    "name": "Samsung Galaxy A27 (8GB RAM|256GB)",
+    "category": "Samsung Phones",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/Samsung-Galaxy-A27-200x200.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/samsung-mobile-phone-price-list-sri-lanka/samsung-galaxy-a27-8gb-ram-256gb"
+  },
+  {
+    "name": "Samsung Galaxy A27 (6GB RAM|128GB)",
+    "category": "Samsung Phones",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/Samsung-Galaxy-A27-200x200.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/samsung-mobile-phone-price-list-sri-lanka/samsung-galaxy-a27-6gb-ram-128gb"
+  },
+  {
+    "name": "Samsung Galaxy S25 FE (8GB RAM|128GB)",
+    "category": "Samsung Phones",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/Samsung%20Galaxy%20S25%20FE-200x200.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/samsung-mobile-phone-price-list-sri-lanka/samsung-galaxy-s25-fe-8gb-ram-128gb"
+  },
+  {
+    "name": "Samsung Galaxy A17 4G (8GB RAM|256GB)",
+    "category": "Samsung Phones",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/Samsung%20Galaxy%20A17%204G-200x200.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/samsung-mobile-phone-price-list-sri-lanka/samsung-galaxy-a17-4g-8gb-ram-256gb-"
+  },
+  {
+    "name": "Samsung Galaxy A57 (12GB RAM|256GB)",
+    "category": "Samsung Phones",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/Samsung%20Galaxy%20A57-200x200.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/samsung-mobile-phone-price-list-sri-lanka/samsung-galaxy-a57-12gb-ram-256gb-"
+  },
+  {
+    "name": "Samsung Galaxy A57 (8GB RAM|256GB)",
+    "category": "Samsung Phones",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/Samsung%20Galaxy%20A57-200x200.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/samsung-mobile-phone-price-list-sri-lanka/samsung-galaxy-a57-8gb-ram-256gb-"
+  },
+  {
+    "name": "Xiaomi Redmi Note 17 Pro Max 5G (8GB RAM|256GB)",
+    "category": "Xiaomi Phones",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/Xiaomi-Redmi-Note-17-Pro-Max-200x200.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/huawei-price-list-in-sri-lanka/xiaomi-redmi-note-17-pro-max-5g-8gb-ram-256gb-"
+  },
+  {
+    "name": "Xiaomi Redmi Note 17 Pro 5G (8GB RAM|256GB)",
+    "category": "Xiaomi Phones",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/Xiaomi-Redmi-Note-17-Pro-200x200.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/huawei-price-list-in-sri-lanka/xiaomi-redmi-note-17-pro-5g-8gb-ram-256gb-"
+  },
+  {
+    "name": "Xiaomi Redmi Note 17 4G (6GB RAM|256GB)",
+    "category": "Xiaomi Phones",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/Xiaomi-Redmi-Note-17-4G-200x200.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/huawei-price-list-in-sri-lanka/xiaomi-redmi-note-17-4g-6gb-ram-256gb-"
+  },
+  {
+    "name": "Apple iPhone 18 Pro Max 2TB",
+    "category": "Apple Phones",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/Apple-iPhone-18-Pro-Max-200x200.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/apple-iphone-price-list-in-sri-lanka/apple-iphone-18-pro-max-2tb"
+  },
+  {
+    "name": "Apple iPhone 18 Pro Max 1TB",
+    "category": "Apple Phones",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/Apple-iPhone-18-Pro-Max-200x200.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/apple-iphone-price-list-in-sri-lanka/apple-iphone-18-pro-max-1tb"
+  },
+  {
+    "name": "Apple iPhone 18 Pro Max 512GB",
+    "category": "Apple Phones",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/Apple-iPhone-18-Pro-Max-200x200.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/apple-iphone-price-list-in-sri-lanka/apple-iphone-18-pro-max-512gb"
+  },
+  {
+    "name": "Apple iPhone 18 Pro Max 256GB",
+    "category": "Apple Phones",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/Apple-iPhone-18-Pro-Max-200x200.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/apple-iphone-price-list-in-sri-lanka/apple-iphone-18-pro-max-256gb"
+  },
+  {
+    "name": "Apple iPhone 18 Pro 2TB",
+    "category": "Apple Phones",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/Apple-iPhone-18-Pro-200x200.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/apple-iphone-price-list-in-sri-lanka/apple-iphone-18-pro-2tb"
+  },
+  {
+    "name": "Apple iPhone 18 Pro 1TB",
+    "category": "Apple Phones",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/Apple-iPhone-18-Pro-200x200.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/apple-iphone-price-list-in-sri-lanka/apple-iphone-18-pro-1tb"
+  },
+  {
+    "name": "Oppo Reno15 (12GB RAM|512GB)",
+    "category": "Oppo Phones",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/Oppo-Reno15-200x200.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/oppo-price-list-in-sri-lanka/oppo-reno15-12gb-ram-512gb-"
+  },
+  {
+    "name": "Oppo Reno15 F (12GB RAM|512GB)",
+    "category": "Oppo Phones",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/Oppo-Reno15-F-200x200.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/oppo-price-list-in-sri-lanka/oppo-reno15-f-12gb-ram-512gb-"
+  },
+  {
+    "name": "Oppo A6 (8GB RAM|256GB)",
+    "category": "Oppo Phones",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/Oppo-A6-200x200.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/oppo-price-list-in-sri-lanka/oppo-a6-8gb-ram-256gb-"
+  },
+  {
+    "name": "JBL Party Box 710",
+    "category": "Bluetooth Speakers",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/JBL%20Party%20Box%20710-200x200.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/jbl-party-box-710"
+  },
+  {
+    "name": "JBL Party Box 320",
+    "category": "Bluetooth Speakers",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/JBL%20Party%20Box%20320-200x200.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/jbl-party-box-320"
+  },
+  {
+    "name": "JBL Party Box On The Go - Dual Mic",
+    "category": "Bluetooth Speakers",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/JBL%20Party%20Box%20On%20The%20Go-200x200.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/jbl-party-box-on-the-go"
+  },
+  {
+    "name": "JBL Party Box 310",
+    "category": "Bluetooth Speakers",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/JBL%20Party%20Box%20310-200x200.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/jbl-party-box-310"
+  },
+  {
+    "name": "HMD Fusion (8GB RAM|256GB)",
+    "category": "HMD Phones",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/HMD%20Fusion-200x200.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/hmd-fusion-8gb-ram-256gb-"
+  },
+  {
+    "name": "Apple iPhone 17 Pro Max 256GB",
+    "category": "Apple Phones",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/Apple%20iPhone%2017%20Pro%20Max-200x200.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/apple-iphone-17-pro-max-256gb"
+  },
+  {
+    "name": "Google Pixel 10a (8GB RAM|128GB)",
+    "category": "Google Phones",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/Google%20Pixel%2010a-200x200.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/google-pixel-10a-8gb-ram-128gb"
+  },
+  {
+    "name": "Honor 600 (12GB RAM|256GB)",
+    "category": "Honor Phones",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/Honor%20600-200x200.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/honor-600-12gb-ram-256gb"
+  },
+  {
+    "name": "Infinix Hot 70 (4GB RAM|128GB)",
+    "category": "Infinix Phones",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/Infinix%20Hot%2070-200x200.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/infinix-hot-70-4gb-ram-128gb"
+  },
+  {
+    "name": "Infinix Note 60 Pro (8GB RAM|256GB)",
+    "category": "Infinix Phones",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/Infinix%20Note%2060%20Pro-200x200.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/infinix-note-60-pro-8gb-ram-256gb"
+  },
+  {
+    "name": "Xiaomi Redmi Pad Pro (8GB RAM|256GB)",
+    "category": "Tablets",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/Xiaomi-Redmi-Pad-Pro-228x228.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/tablet-price-list-in-sri-lanka/xiaomi-redmi-pad-pro-8gb-ram-256gb-"
+  },
+  {
+    "name": "Xiaomi Redmi Pad Pro (6GB RAM|128GB)",
+    "category": "Tablets",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/Xiaomi-Redmi-Pad-Pro-228x228.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/tablet-price-list-in-sri-lanka/xiaomi-redmi-pad-pro-6gb-ram-128gb-"
+  },
+  {
+    "name": "Xiaomi Redmi Pad 2 (8GB RAM|256GB)",
+    "category": "Tablets",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/Xiaomi-Redmi-Pad-2-228x228.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/tablet-price-list-in-sri-lanka/xiaomi-redmi-pad-2-8gb-ram-256gb-"
+  },
+  {
+    "name": "Xiaomi Redmi Pad 2 (4GB RAM|128GB)",
+    "category": "Tablets",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/Xiaomi-Redmi-Pad-2-228x228.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/tablet-price-list-in-sri-lanka/xiaomi-redmi-pad-2-4gb-ram-128gb-"
+  },
+  {
+    "name": "Samsung Galaxy Tab S10 FE+ 5G (8GB RAM|128GB)",
+    "category": "Tablets",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/Samsung-Galaxy-Tab-S10-FE-plus-228x228.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/tablet-price-list-in-sri-lanka/samsung-galaxy-tab-s10-fe-5g-8gb-ram-128gb"
+  },
+  {
+    "name": "Samsung Galaxy Tab S10 FE 5G (12GB RAM|256GB)",
+    "category": "Tablets",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/Samsung-Galaxy-Tab-S10-FE-228x228.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/tablet-price-list-in-sri-lanka/samsung-galaxy-tab-s10-fe-5g-12gb-ram-256gb"
+  },
+  {
+    "name": "Samsung Galaxy Tab S10 FE wifi (8GB RAM|128GB)",
+    "category": "Tablets",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/Samsung-Galaxy-Tab-S10-FE-228x228.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/tablet-price-list-in-sri-lanka/samsung-galaxy-tab-s10-fe-wifi-8gb-ram-128gb"
+  },
+  {
+    "name": "Samsung Galaxy Tab S10 Lite 5G (8GB RAM|256GB)",
+    "category": "Tablets",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/Samsung-Galaxy-Tab-S10-Lite-228x228.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/tablet-price-list-in-sri-lanka/samsung-galaxy-tab-s10-lite-5g-8gb-ram-256gb"
+  },
+  {
+    "name": "Samsung Galaxy Tab S10 Lite wifi (8GB RAM|256GB)",
+    "category": "Tablets",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/Samsung-Galaxy-Tab-S10-Lite-228x228.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/tablet-price-list-in-sri-lanka/samsung-galaxy-tab-s10-lite-wifi-8gb-ram-256gb"
+  },
+  {
+    "name": "Samsung Galaxy Tab S10 Lite 5G (6GB RAM|128GB)",
+    "category": "Tablets",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/Samsung-Galaxy-Tab-S10-Lite-228x228.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/tablet-price-list-in-sri-lanka/samsung-galaxy-tab-s10-lite-6gb-ram-128gb-5g"
+  },
+  {
+    "name": "Samsung Galaxy Tab S10 Lite wifi (6GB RAM|128GB)",
+    "category": "Tablets",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/Samsung-Galaxy-Tab-S10-Lite-228x228.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/tablet-price-list-in-sri-lanka/samsung-galaxy-tab-s10-lite-6gb-ram-128gb-wifi"
+  },
+  {
+    "name": "Samsung Galaxy Tab A11+ (6GB RAM|128GB)",
+    "category": "Tablets",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/Samsung-Galaxy-Tab-A11-plus-228x228.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/tablet-price-list-in-sri-lanka/samsung-galaxy-tab-a11-plus-6gb-ram-128gb"
+  },
+  {
+    "name": "Samsung Galaxy Tab A11 (8GB RAM|128GB)",
+    "category": "Tablets",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/Samsung-Galaxy-Tab-A11-228x228.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/tablet-price-list-in-sri-lanka/samsung-galaxy-tab-a11-8gb-ram-128gb"
+  },
+  {
+    "name": "Samsung Galaxy Tab A11 (4GB RAM|64GB)",
+    "category": "Tablets",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/Samsung-Galaxy-Tab-A11-228x228.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/tablet-price-list-in-sri-lanka/samsung-galaxy-tab-a11-4gb-ram-64gb"
+  },
+  {
+    "name": "Greentel A9 Pro Tab (4GB RAM|64GB)",
+    "category": "Tablets",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/Greentel%20A9%20Pro%20Tab-228x228.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/tablet-price-list-in-sri-lanka/greentel-a9-pro-tab-4gb-ram-64gb-"
+  },
+  {
+    "name": "Greentel Tab A10 Pro (4GB RAM|128GB)",
+    "category": "Tablets",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/Greentel%20A10%20Pro-228x228.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/tablet-price-list-in-sri-lanka/greentel-tab-a10-pro-4gb-ram-128gb-"
+  },
+  {
+    "name": "Blackview ZENO 10 (12GB RAM|128GB)",
+    "category": "Tablets",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/Blackview%20ZENO%2010-228x228.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/tablet-price-list-in-sri-lanka/blackview-zeno-10-12gb-ram-128gb-"
+  },
+  {
+    "name": "Blackview MEGA 2 (12GB RAM|256GB)",
+    "category": "Tablets",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/Blackview%20MEGA%202-228x228.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/tablet-price-list-in-sri-lanka/blackview-mega-2-12gb-ram-256gb-"
+  },
+  {
+    "name": "Blackview Tab 60 Pro (4GB RAM|128GB)",
+    "category": "Tablets",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/Blackview%20Tab%2060%20Pro-228x228.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/tablet-price-list-in-sri-lanka/blackview-tab-60-pro-4gb-ram-128gb-"
+  },
+  {
+    "name": "Blackview Tab 20 WiFi (4GB RAM|64GB)",
+    "category": "Tablets",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/Blackview%20Tab%2020%20WiFi-228x228.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/tablet-price-list-in-sri-lanka/blackview-tab-20-wifi-4gb-ram-64gb-"
+  },
+  {
+    "name": "JBL Party Box 1000",
+    "category": "Bluetooth Speakers",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/JBL%20Party%20Box%201000-228x228.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/accessories-price-list-in-sri-lanka/bluetooth-speaker-prices-in-sri-lanka/jbl-party-box-1000"
+  },
+  {
+    "name": "JBL Party Box 120",
+    "category": "Bluetooth Speakers",
+    "price": 0,
+    "image": "https://smartmobile.lk/image/cache/catalog/JBL%20Party%20Box%20120-228x228.jpg",
+    "tag": "Enquire",
+    "source": "https://smartmobile.lk/accessories-price-list-in-sri-lanka/bluetooth-speaker-prices-in-sri-lanka/jbl-party-box-120"
+  }
 ];
-const categories = ["All", "Smartphones", "Audio", "Wearables", "Accessories"];
+const categories = ["All", ...Array.from(new Set(products.map(p=>p.category)))];
 const wa = "94777543984";
 
 export default function Home() {
@@ -24,7 +418,7 @@ export default function Home() {
   const cartItems = products.filter(p=>cart[p.name]).map(p=>({...p,qty:cart[p.name]}));
   const cartCount = Object.values(cart).reduce((a,b)=>a+b,0);
   const total = cartItems.reduce((a,p)=>a+p.price*p.qty,0);
-  const checkout = chat(`Hi TONDEL, I would like to order:\n${cartItems.map(p=>`• ${p.name} x ${p.qty} — Rs. ${(p.price*p.qty).toLocaleString()}`).join("\n")}\n\nEstimated total: Rs. ${total.toLocaleString()}\nPlease confirm availability and final price.`);
+  const checkout = chat(`Hi TONDEL, I would like to order:\n${cartItems.map(p=>`• ${p.name} x ${p.qty}`).join("\n")}\n\nPlease quote these items\nPlease confirm availability and final price.`);
   useEffect(()=>{
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     let cleanup=()=>{};
@@ -56,7 +450,7 @@ export default function Home() {
       <div className="hero-copy"><p className="eyebrow">SMART CHOICES. SMARTER LIVING.</p><h1>Tech you’ll love.<br/><em>Service you’ll trust.</em></h1><p className="lead">Discover smartphones, smart gadgets and everyday accessories—carefully selected for modern life in Sri Lanka.</p><div className="hero-buttons"><a className="primary" href="#shop">Explore products <span>→</span></a><a className="secondary" href={chat("Hi TONDEL, can you help me choose a product?")} target="_blank">Chat with us</a></div><div className="hero-trust"><div><b>Islandwide</b><span>Delivery</span></div><div><b>1 Month</b><span>Warranty*</span></div><div><b>Fast</b><span>WhatsApp support</span></div></div></div>
       <div className="hero-visual"><div className="orb"/><img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=1000&q=90" alt="Premium smartphone"/><div className="float-card"><b>✦</b><div><strong>Fresh arrivals</strong><small>Ask for today’s stock</small></div></div></div>
     </section>
-    <section className="category-strip" id="categories"><p>Shop by category</p><div>{categories.slice(1).map((c,i)=><button key={c} onClick={()=>choose(c)}><span>{["▯","♫","◉","⚡"][i]}</span>{c}<b>→</b></button>)}</div></section>
+    <section className="category-strip" id="categories"><p>Shop by category</p><div>{categories.slice(1).map((c,i)=><button key={c} onClick={()=>choose(c)}><span>{"▯"}</span>{c}<b>→</b></button>)}</div></section>
     <section className="story" aria-label="TONDEL shopping experience">
       <div className="story-copy">
         <article className="story-step"><small>01 · DISCOVER</small><h2>Find tech that fits your life.</h2><p>Explore a curated range of smartphones, audio, wearables and everyday essentials.</p></article>
@@ -66,9 +460,9 @@ export default function Home() {
       <div className="story-stage"><div className="story-glow"/><div className="story-device"><img src="/tondel-logo.png" alt="TONDEL"/><span>SMART SHOPPING</span><div><b>Fast</b><small>WhatsApp checkout</small></div></div></div>
     </section>
     <section className="shop" id="shop">
-      <div className="section-title"><div><p className="eyebrow">CURATED FOR YOU</p><h2>Featured products</h2></div><label>⌕<input placeholder="Search products" value={search} onChange={e=>setSearch(e.target.value)}/></label></div>
+      <div className="section-title"><div><p className="eyebrow">CURATED FOR YOU</p><h2>Explore 50 products</h2></div><label>⌕<input placeholder="Search products" value={search} onChange={e=>setSearch(e.target.value)}/></label></div>
       <div className="filters">{categories.map(c=><button className={category===c?"active":""} onClick={()=>setCategory(c)} key={c}>{c}</button>)}</div>
-      <div className="product-grid">{filtered.map(p=><article className="product" key={p.name}><div className="product-image"><span>{p.tag}</span><img src={p.image} alt={p.name}/></div><div className="product-info"><small>{p.category}</small><h3>{p.name}</h3><p className="price">Rs. {p.price.toLocaleString()}</p><button className="add-cart" onClick={()=>add(p.name)}>Add to cart <b>＋</b></button><a className="quick-order" href={chat(`Hi TONDEL, I'm interested in ${p.name}. Please confirm price and availability.`)} target="_blank">Quick WhatsApp order ↗</a></div></article>)}</div>
+      <div className="product-grid">{filtered.map(p=><article className="product" key={p.name}><div className="product-image"><span>{p.tag}</span><img src={p.image} alt={p.name}/></div><div className="product-info"><small>{p.category}</small><h3>{p.name}</h3><p className="price">Price on request</p><button className="add-cart" onClick={()=>add(p.name)}>Add to cart <b>＋</b></button><a className="quick-order" href={chat(`Hi TONDEL, I'm interested in ${p.name}. Please confirm price and availability.`)} target="_blank">Quick WhatsApp order ↗</a></div></article>)}</div>
       {!filtered.length&&<div className="empty">No matching products. Message us and we’ll help you find it.</div>}
     </section>
     <section className="promo"><div><p className="eyebrow">NEED HELP CHOOSING?</p><h2>Tell us what you need.<br/>We’ll find the right tech.</h2><p>Send your budget and requirements through WhatsApp for a quick, friendly recommendation.</p><a className="primary light" href={chat("Hi TONDEL, I need help choosing a product. My budget is: ")} target="_blank">Get a recommendation →</a></div><div className="promo-art"><div className="ring"/><img src="/tondel-logo.png" alt="TONDEL logo"/></div></section>
@@ -76,6 +470,6 @@ export default function Home() {
     <section className="benefits" id="support"><div><span>⌁</span><h3>Islandwide Delivery</h3><p>Convenient delivery to locations across Sri Lanka.</p></div><div><span>◇</span><h3>1-Month Warranty</h3><p>Warranty support for eligible products. Confirm coverage before purchase.</p></div><div><span>◌</span><h3>WhatsApp Support</h3><p>Product advice and ordering help from a real person.</p></div></section>
     <footer><div className="footer-main"><div><img className="footer-logo" src="/tondel-logo.png" alt="TONDEL"/><p>Smartphones, electronics, gadgets and accessories—delivered islandwide.</p></div><div><h4>Quick links</h4><a href="#shop">Shop products</a><a href="#about">About TONDEL</a><a href="#support">Delivery & Warranty</a></div><div><h4>Contact</h4><a href="tel:+94777543984">077 754 3984</a><a href={chat("Hi TONDEL!")} target="_blank">Chat on WhatsApp</a><small>Address & email: to be updated</small></div></div><div className="footer-bottom"><span>© 2026 TONDEL. All rights reserved.</span><span>Smart Choices. Smarter Living.</span></div></footer>
     <a className="floating-wa" href={chat("Hi TONDEL, I would like to place an order.")} target="_blank">◔<span>Order on WhatsApp</span></a>
-    {cartOpen&&<><button className="cart-backdrop" onClick={()=>setCartOpen(false)} aria-label="Close cart"/><aside className="cart-drawer"><div className="cart-head"><div><small>YOUR SHOPPING BAG</small><h2>{cartCount} {cartCount===1?"item":"items"}</h2></div><button onClick={()=>setCartOpen(false)}>×</button></div><div className="cart-list">{!cartItems.length?<div className="cart-empty"><b>Your bag is empty</b><p>Add something you love from our collection.</p><button onClick={()=>setCartOpen(false)}>Continue shopping</button></div>:cartItems.map(p=><div className="cart-row" key={p.name}><img src={p.image} alt=""/><div><strong>{p.name}</strong><small>Rs. {p.price.toLocaleString()}</small><div className="qty"><button onClick={()=>setCart(v=>({...v,[p.name]:Math.max(0,p.qty-1)}))}>−</button><span>{p.qty}</span><button onClick={()=>setCart(v=>({...v,[p.name]:p.qty+1}))}>＋</button></div></div><b>Rs. {(p.price*p.qty).toLocaleString()}</b></div>)}</div>{cartItems.length>0&&<div className="cart-checkout"><div><span>Estimated total</span><b>Rs. {total.toLocaleString()}</b></div><p>Final price and stock will be confirmed on WhatsApp.</p><a href={checkout} target="_blank">Checkout on WhatsApp →</a><button onClick={()=>setCart({})}>Clear bag</button></div>}</aside></>}
+    {cartOpen&&<><button className="cart-backdrop" onClick={()=>setCartOpen(false)} aria-label="Close cart"/><aside className="cart-drawer"><div className="cart-head"><div><small>YOUR SHOPPING BAG</small><h2>{cartCount} {cartCount===1?"item":"items"}</h2></div><button onClick={()=>setCartOpen(false)}>×</button></div><div className="cart-list">{!cartItems.length?<div className="cart-empty"><b>Your bag is empty</b><p>Add something you love from our collection.</p><button onClick={()=>setCartOpen(false)}>Continue shopping</button></div>:cartItems.map(p=><div className="cart-row" key={p.name}><img src={p.image} alt=""/><div><strong>{p.name}</strong><small>Price on request</small><div className="qty"><button onClick={()=>setCart(v=>({...v,[p.name]:Math.max(0,p.qty-1)}))}>−</button><span>{p.qty}</span><button onClick={()=>setCart(v=>({...v,[p.name]:p.qty+1}))}>＋</button></div></div><b>Quote pending</b></div>)}</div>{cartItems.length>0&&<div className="cart-checkout"><div><span>Estimated total</span><b>Confirm on WhatsApp</b></div><p>Final price and stock will be confirmed on WhatsApp.</p><a href={checkout} target="_blank">Checkout on WhatsApp →</a><button onClick={()=>setCart({})}>Clear bag</button></div>}</aside></>}
   </main>;
 }
