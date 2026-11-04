@@ -78,3 +78,30 @@ html body .premium-hero .kinetic-title>em{display:inline-block;background:linear
 @media(max-width:1100px){html body .home-page .hero.premium-hero{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px}.hero-assurance{display:none}html body .home-page .premium-hero .device-stage{height:420px}}
 @media(max-width:760px){html body .home-page .hero.premium-hero{grid-template-columns:minmax(0,1fr);padding:32px 22px 35px;min-height:0;gap:24px}html body .home-page .premium-hero .device-stage{height:360px;width:min(100%,430px);margin:0 auto}.premium-hero .kinetic-title{font-size:clamp(40px,11vw,58px)}.device-phone{left:0}.device-watch{right:0}.device-caption{font-size:8px;letter-spacing:.18em}}
 @media(prefers-reduced-motion:reduce){.device-float,.kinetic-title>span,html body .premium-hero .kinetic-title>em{animation:none!important;will-change:auto}.device-headphones{transform:rotate(-7deg)}.device-phone{transform:rotate(-14deg)}.device-watch{transform:rotate(9deg)}}
+
+/* Retail footer */
+html body footer.retail-footer{padding:48px max(24px,calc((100vw - 1224px)/2)) 90px;background:#0b0e13;color:#f6f7f9;border-top:1px solid #2c333d}
+.retail-footer .footer-intro{display:flex;justify-content:space-between;align-items:center;gap:24px;padding-bottom:34px;border-bottom:1px solid #ffffff14;margin-bottom:36px}
+.footer-kicker{font-size:10px;font-weight:700;letter-spacing:.17em;color:#ff9b50}
+.retail-footer .footer-intro h2{font-size:clamp(24px,3vw,36px);font-weight:750;letter-spacing:-.035em;line-height:1.2;margin:12px 0 0}
+.retail-footer a.footer-chat{display:flex;align-items:center;gap:25px;padding:15px 20px;border:1px solid #ff8a3155;background:#ff781510;border-radius:10px;color:#ffb47b;white-space:nowrap;font-size:12px;font-weight:700}
+html body .retail-footer .footer-main{display:grid;grid-template-columns:1.5fr .8fr .9fr 1.2fr;gap:40px}
+.retail-footer .footer-main>div{gap:13px;min-width:0}
+.retail-footer .footer-main h4{margin:0 0 8px;color:#fff;font-size:11px;letter-spacing:.12em}
+.retail-footer .footer-main a{color:#b8c0cc;font-size:13px;width:fit-content}
+.retail-footer .footer-main a:hover{color:#ff9b50}
+.retail-footer .footer-main p{font-size:12px;line-height:1.8;color:#929dac;margin:0;max-width:300px}
+.retail-footer .footer-main .footer-logo{width:150px;height:80px;object-fit:contain;object-position:left center;margin-top:-18px}
+.footer-location{font-size:11px;color:#b8c0cc;margin-top:6px}
+.retail-footer .footer-main a.footer-phone{font-size:21px;font-weight:700;letter-spacing:-.02em;color:#fff}
+.retail-footer .footer-main small{font-size:10px;line-height:1.7;color:#929dac}
+.footer-payment-row{display:flex;align-items:center;justify-content:space-between;gap:24px;background:#ffffff04;border:1px solid #ffffff10;border-radius:14px;margin-top:36px;padding:22px 24px}
+.footer-payment-row h3{font-size:13px;margin:0 0 7px;color:#e7ecf2;font-weight:700}
+.retail-footer .footer-payment-row p{max-width:none;font-size:11px;line-height:1.6;color:#a7b0bd;margin:0}
+.footer-payment-row small{display:block;margin-top:5px;font-size:10px;color:#8994a3}
+.footer-payment-badges{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.footer-payment-badges img{display:block;width:100px;height:40px;object-fit:contain;background:#fff;border:1px solid #fff;border-radius:6px;padding:3px}
+.retail-footer .footer-bottom{display:flex;justify-content:space-between;align-items:center;gap:18px;border-top:1px solid #ffffff12;margin-top:30px;padding-top:22px;color:#929dac;font-size:10px}
+.retail-footer .footer-bottom a{color:#dbe1ea}
+@media(max-width:900px){html body .retail-footer .footer-main{grid-template-columns:1.3fr 1fr;gap:32px}.retail-footer .footer-main>div:first-child{grid-column:auto}.footer-payment-row{align-items:flex-start;flex-direction:column}}
+@media(max-width:600px){html body footer.retail-footer{padding:34px 20px 100px}.retail-footer .footer-intro{align-items:flex-start;flex-direction:column;gap:20px}.retail-footer .footer-intro h2{max-width:280px}html body .retail-footer .footer-main{grid-template-columns:1fr 1fr;gap:28px 20px}.retail-footer .footer-main .footer-brand-block,.retail-footer .footer-main .footer-contact-block{grid-column:1/-1}.footer-payment-row{padding:18px}.footer-payment-badges{gap:7px}.footer-payment-badges img{width:86px;height:36px}.retail-footer .footer-bottom{align-items:flex-start;flex-direction:column;gap:12px}}
