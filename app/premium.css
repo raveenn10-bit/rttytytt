@@ -182,3 +182,12 @@ html body footer.retail-footer{
 .retail-footer .footer-payment-row{background:#19050b8a;border-color:#ff5e751c;backdrop-filter:blur(12px)}
 .retail-footer .footer-bottom{border-top-color:#ff71851c}
 .retail-footer .footer-main a:hover,.retail-footer .footer-main h4,.retail-footer .footer-kicker{color:#ff8da0}
+
+
+/* Vanta FOG enhancement; image gradient remains the static fallback */
+html body footer.retail-footer{position:relative;isolation:isolate;overflow:hidden}
+.footer-vanta-layer{position:absolute;inset:0;z-index:0;opacity:.48;pointer-events:none}
+.footer-vanta-layer canvas{display:block!important;width:100%!important;height:100%!important}
+.retail-footer>*, .retail-footer:before{position:relative;z-index:2}
+.retail-footer:after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(8,0,3,.32),rgba(8,0,3,.62)),radial-gradient(circle at 20% 15%,transparent,rgba(0,0,0,.22) 68%)}
+@media(max-width:767px),(prefers-reduced-motion:reduce){.footer-vanta-layer{display:none}}
