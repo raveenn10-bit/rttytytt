@@ -166,3 +166,19 @@ html body .retail-footer .footer-main{display:grid;grid-template-columns:1.5fr .
 .hero-pill{letter-spacing:.08em}.hero-specs span b{color:#ff8b36}.premium-hero .hero-buy strong{font-size:22px}
 @media(max-width:900px){.import-calculator{margin:32px 20px 46px;grid-template-columns:1fr;padding:36px;gap:30px}}
 @media(max-width:600px){.import-calculator{margin:25px 14px 38px;padding:25px 17px;border-radius:17px}.calculator-intro h2{font-size:36px}.calculator-panel{padding:16px}.calculator-fields{grid-template-columns:1fr 1fr;gap:10px}.calculator-fields label>div{height:44px}.result-breakdown{grid-template-columns:1fr 1fr}.calculator-result{padding:17px}.calculator-result>strong{font-size:35px}}
+
+
+/* Client-selected black and crimson footer palette */
+html body footer.retail-footer{
+  background:
+    linear-gradient(180deg,rgba(8,0,3,.70),rgba(12,0,4,.88)),
+    radial-gradient(circle at 76% 30%,rgba(218,0,48,.22),transparent 44%),
+    url("/footer-red-bg.jpg") center 54%/cover no-repeat;
+  border-top-color:#b50d2f;
+  box-shadow:inset 0 1px 0 #ff33563d;
+}
+.retail-footer .footer-intro{border-bottom-color:#ff71851f}
+.retail-footer a.footer-chat{border-color:#f43f5e55;background:#dc143c14;color:#ffb5c0}
+.retail-footer .footer-payment-row{background:#19050b8a;border-color:#ff5e751c;backdrop-filter:blur(12px)}
+.retail-footer .footer-bottom{border-top-color:#ff71851c}
+.retail-footer .footer-main a:hover,.retail-footer .footer-main h4,.retail-footer .footer-kicker{color:#ff8da0}
