@@ -469,6 +469,128 @@ const catalogueDepartments = [
     {title:"Office & POS",items:["Projectors","Scanners","Webcams","Shredders","Barcode scanners","Receipt printers","Cash drawers","Fingerprint machines"]}
   ]}
 ];
+const departmentProducts: Record<string, {name:string;image:string}[]> = {
+  "10": [
+    {
+      "name": "Anker PowerCore 20000",
+      "image": "https://down-sg.img.susercontent.com/file/sg-11134207-824gn-mfnfqx6t1y4p23"
+    },
+    {
+      "name": "UGREEN Nexode 65W",
+      "image": "https://down-vn.img.susercontent.com/file/cn-11134207-7r98o-lyyxmey3s1wi73"
+    }
+  ],
+  "11": [
+    {
+      "name": "TP-Link Archer AX23",
+      "image": "https://m.media-amazon.com/images/I/415q1G7dJ1L._SL500_.jpg"
+    },
+    {
+      "name": "TP-Link Deco X20",
+      "image": "https://wifi.com.vn/media/product/3670_deco_x20_3_pack_.jpg"
+    }
+  ],
+  "12": [
+    {
+      "name": "Xiaomi Robot Vacuum S10",
+      "image": "https://cdn.webshopapp.com/shops/256009/files/444006607/xiaomi-xiaomi-robot-vacuum-s10.jpg"
+    },
+    {
+      "name": "EcoFlow RIVER 2",
+      "image": "https://thestructuralshop.co.nz/cdn/shop/files/ecoflow-river-2-portable-power-station-693665.jpg?v=1715050364&width=1445"
+    }
+  ],
+  "01": [
+    {
+      "name": "Apple iPhone 15",
+      "image": "https://bfasset.costco-static.com/U447IH35/as/nhfhsc3vt4gspc5c37f4xf/4000221050-894_blue_1?auto=webp&canvas=1024%2C1024&fit=bounds&format=jpg&height=1024&width=1024"
+    },
+    {
+      "name": "Samsung Galaxy S24",
+      "image": "https://shop.theclub.com.hk/media/catalog/product/cache/bfa0ef71007a70e7a7d022a269485c94/4/2/4225091_1.jpg"
+    }
+  ],
+  "02": [
+    {
+      "name": "Apple MacBook Air M1",
+      "image": "https://s3.zoommer.ge/zoommer-images/thumbs/0136920_apple-mgna3lla-macbook-air-13-inch-2020-silver_550.png"
+    },
+    {
+      "name": "ASUS Vivobook 15",
+      "image": "https://computermania.co.za/cdn/shop/files/X1504VACS.1.jpg?v=1740655148"
+    }
+  ],
+  "03": [
+    {
+      "name": "Apple iPad (10th generation)",
+      "image": "https://eshop.hkcsl.com/on/demandware.static/-/Sites-master-hkt-hk/default/dw7e6fc5a0/images/4018401scol/4018401scol_1_en.jpg"
+    },
+    {
+      "name": "Samsung Galaxy Watch6",
+      "image": "https://openbox.ca/cdn/shop/files/1_20d96e94-325b-4bc7-b72e-4973ba221e2e_1100x.jpg?v=1694041137"
+    }
+  ],
+  "04": [
+    {
+      "name": "Epson EcoTank L3250",
+      "image": "https://cdn.dotpe.in/longtail/item_thumbnails/3946605/5Ix4snTb-800-800.webp"
+    },
+    {
+      "name": "Canon PIXMA G3010",
+      "image": "https://beehappyph.com/cdn/shop/products/CanonPixmaG3010_1_1000x.png?v=1680586340"
+    }
+  ],
+  "05": [
+    {
+      "name": "TP-Link Tapo C200 Wi-Fi Camera",
+      "image": "https://image.citycenter.jo/cache/catalog/12020/92020/C200-1200x630.jpg"
+    },
+    {
+      "name": "TP-Link Tapo C320WS Outdoor Camera",
+      "image": "https://media.4rgos.it/s/Argos/1488535_R_SET"
+    }
+  ],
+  "06": [
+    {
+      "name": "DJI Mini 4 Pro",
+      "image": "https://www.drones360.mx/assets/drones/dji-mini-4-pro.jpg"
+    },
+    {
+      "name": "DJI Osmo Pocket 3",
+      "image": "https://www.impulsecameras.com/cdn/shop/files/5cc92ef110e70df4fc642a29da0b64a1_ultra.jpg?v=1711311362&width=1214"
+    }
+  ],
+  "07": [
+    {
+      "name": "Insta360 X4",
+      "image": "https://img.bobshop.co.za/f_auto%2Cc_fit%2Cw_900%2Ch_900%2Cd_notfound.png/user/1261747/Insta360-X4-Waterproof-360-8K-Action-Camera_7IPvf3CpyW.jpg"
+    },
+    {
+      "name": "Insta360 Ace Pro",
+      "image": "https://carmarthencameras.com/cdn/shop/files/insta-360-ace-pro-8k-action-camera-Insta360-Ace-Pro-3-copy_1000x1000_93569d47-1211-435b-88aa-65c8395c5152.jpg?v=1701251841"
+    }
+  ],
+  "08": [
+    {
+      "name": "Sony Alpha A6400",
+      "image": "https://images-us-prod.cms.commerce.dynamics.com/cms/api/hbzzfqllpg/imageFileData/search?fallback=%2FProducts%2FV567SON118_000_001.jpg%2C%2FProducts%2FV567SON118_000_001.png%2C%2FProducts%2FV567SON118_000_001.webp&fileName=%2FProducts%2F567SON118_000_001.png&m=6"
+    },
+    {
+      "name": "Canon EOS R50",
+      "image": "https://www.canon.ca/dam/products/BUSINESS-UNIT/ITCG/Cameras/EOS-Cameras/Mirrorless/EOS-R50/5811C012_eos-r50-rf-s18-45mm-f4-5-6-3-is-stm-lens-kit-black_primary_resized.png"
+    }
+  ],
+  "09": [
+    {
+      "name": "Logitech MX Master 3S",
+      "image": "https://globaliraq.iq/cdn/shop/files/1_d7d6993b-f337-403e-bbc6-cfbf9c3fb166.jpg?v=1745772606"
+    },
+    {
+      "name": "Samsung 990 PRO SSD",
+      "image": "https://cdn.hstatic.net/products/200000837185/ssd-samsung-990-pro-pcie-gen-4-0__1__8288631e4bb644d8be514c3c6062a474.png"
+    }
+  ]
+};
 const wa = "94777543984";
 
 export default function Home({ shopOnly = false }: { shopOnly?: boolean }) {
@@ -554,7 +676,18 @@ export default function Home({ shopOnly = false }: { shopOnly?: boolean }) {
       <aside className="hero-assurance"><div><b>▣</b><span>Islandwide<br/>Delivery</span></div><div><b>◇</b><span>1 Month<br/>Warranty*</span></div><div><b>◉</b><span>After-Sales<br/>Support</span></div></aside>
     </section>
     <section className="category-strip premium-categories" id="categories" aria-label="Shop by department"><div className="category-heading"><span>EXPLORE THE FULL CATALOGUE</span><a href="/shop#catalogue">View all departments →</a></div><div className="category-rail">{catalogueDepartments.map(d=><a key={d.no} href={(shopOnly?"":"/shop")+"#department-"+d.no} aria-label={"Browse "+d.name}><span className="cat-number">{d.no}</span><span className="cat-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg></span><span className="category-copy"><strong>{d.name}</strong><small>{d.kicker}</small></span><svg className="category-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></a>)}<a className="all-stocked-category" href="/shop#shop"><span className="cat-number">50+</span><span className="cat-icon">◎</span><span className="category-copy"><strong>Stocked Products</strong><small>Ready to enquire</small></span><span className="category-arrow">→</span></a></div></section>
-    <section className={"department-showcase "+(shopOnly?"department-full":"")} id="catalogue"><div className="department-header"><div><p className="eyebrow">COMPLETE PRODUCT CATALOGUE</p><h2>{shopOnly?"Explore every department":"Wholesale technology for every business."}</h2><p>{shopOnly?"Browse the complete TONDEL product range by department, brand and product family.":"Bulk-ready ranges for retailers, resellers, installers, offices and project supply."}</p></div>{!shopOnly&&<a href="/shop#catalogue">View complete catalogue <span>→</span></a>}</div><div className="department-grid">{catalogueDepartments.slice(0,shopOnly?catalogueDepartments.length:6).map(d=><article className="department-card" id={"department-"+d.no} key={d.no}><div className="department-image"><img src={d.image} alt={d.name} loading="lazy" onError={e=>{e.currentTarget.onerror=null;e.currentTarget.src="/tondel-logo.png";}}/><span>{d.no}</span><div className="department-shade"/></div><div className="department-content"><small>{d.kicker}</small><h3>{d.name}</h3><p>{d.description}</p><div className="department-brands">{d.brands}</div>{shopOnly?<div className="department-groups">{d.groups.map(g=><div key={g.title}><strong>{g.title}</strong><span>{g.items.join(" · ")}</span></div>)}</div>:<div className="department-preview" aria-label={"Popular "+d.name+" ranges"}>{d.groups.slice(0,2).flatMap(g=>g.items).slice(0,4).map(item=><span key={item}>{item}</span>)}</div>}<a href={chat("Hi TONDEL, I’m interested in "+d.name+". Please share availability and prices.")} target="_blank" rel="noopener noreferrer">Ask about this department <span>↗</span></a></div></article>)}</div></section>
+    <style>{`
+.department-product-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:20px 0 8px}
+.department-content a.department-product-preview{display:flex;flex-direction:column;gap:9px;margin:0;padding:10px;border:1px solid var(--line);border-radius:14px;background:var(--surface);text-decoration:none;min-width:0;transition:transform .2s,border-color .2s}
+.department-content a.department-product-preview:hover{transform:translateY(-3px);border-color:#ff7214}
+.department-product-photo{display:flex;align-items:center;justify-content:center;aspect-ratio:1.15;background:#fff;border-radius:9px;overflow:hidden;padding:12px}
+.department-product-photo img{width:100%;height:100%;max-height:180px;object-fit:contain;transition:transform .3s}
+.department-product-preview:hover img{transform:scale(1.04)}
+.department-product-preview strong{font-size:12px;line-height:1.45;color:var(--ink);font-weight:700}
+.department-content a.department-product-preview>span{font-size:10px;color:#ed6500;margin-top:auto}
+.department-availability{display:block;font-size:10px!important;line-height:1.5;color:var(--muted)!important;letter-spacing:0!important}
+@media(prefers-reduced-motion:reduce){.department-content a.department-product-preview,.department-product-photo img{transition:none}}
+`}</style><section className={"department-showcase "+(shopOnly?"department-full":"")} id="catalogue"><div className="department-header"><div><p className="eyebrow">COMPLETE PRODUCT CATALOGUE</p><h2>{shopOnly?"Explore every department":"Wholesale technology for every business."}</h2><p>{shopOnly?"Browse the complete TONDEL product range by department, brand and product family.":"Bulk-ready ranges for retailers, resellers, installers, offices and project supply."}</p></div>{!shopOnly&&<a href="/shop#catalogue">View complete catalogue <span>→</span></a>}</div><div className="department-grid">{catalogueDepartments.slice(0,shopOnly?catalogueDepartments.length:6).map(d=><article className="department-card" id={"department-"+d.no} key={d.no}><div className="department-image"><img src={d.image} alt={d.name} loading="lazy" onError={e=>{e.currentTarget.onerror=null;e.currentTarget.src="/tondel-logo.png";}}/><span>{d.no}</span><div className="department-shade"/></div><div className="department-content"><small>{d.kicker}</small><h3>{d.name}</h3><p>{d.description}</p><div className="department-brands">{d.brands}</div><div className="department-product-pair">{departmentProducts[d.no]?.map(item=><a className="department-product-preview" key={item.name} href={chat("Hi TONDEL, please send MOQ, availability and a wholesale quotation for "+item.name+".")} target="_blank" rel="noopener noreferrer"><div className="department-product-photo"><img src={item.image} alt={item.name} loading="lazy" decoding="async" referrerPolicy="no-referrer" onError={e=>{e.currentTarget.style.display="none";}}/></div><strong>{item.name}</strong><span>Request bulk quote ↗</span></a>)}</div><small className="department-availability">Product examples · Confirm stock, variants and MOQ with TONDEL.</small>{shopOnly?<div className="department-groups">{d.groups.map(g=><div key={g.title}><strong>{g.title}</strong><span>{g.items.join(" · ")}</span></div>)}</div>:<div className="department-preview" aria-label={"Popular "+d.name+" ranges"}>{d.groups.slice(0,2).flatMap(g=>g.items).slice(0,4).map(item=><span key={item}>{item}</span>)}</div>}<a href={chat("Hi TONDEL, I’m interested in "+d.name+". Please share availability and prices.")} target="_blank" rel="noopener noreferrer">Ask about this department <span>↗</span></a></div></article>)}</div></section>
     <section className="import-calculator" id="china-calculator"><div className="calculator-intro"><p className="eyebrow">CHINA → SRI LANKA WHOLESALE CALCULATOR</p><h2>Know your landed cost before you quote.</h2><p>Convert the supplier’s RMB price into an estimated Sri Lankan landed cost, then apply your wholesale margin. Every value stays editable for the actual shipment.</p><div className="wholesale-points"><span><b>01</b> Enter China unit price</span><span><b>02</b> Add MOQ and import costs</span><span><b>03</b> Generate wholesale price</span></div><small className="rate-note">Default customs reference: ¥1 = Rs. 50.63, effective 02–08 Nov 2026. Update the rate before confirming a quotation.</small></div><div className="calculator-panel"><div className="calculator-fields"><label><span>Supplier unit price</span><div><b>¥</b><input type="number" min="0" step="1" value={cnyUnit} onChange={e=>setCnyUnit(Number(e.target.value))}/><small>CNY</small></div></label><label><span>Order quantity / MOQ</span><div><b>×</b><input type="number" min="1" step="1" value={wholesaleQty} onChange={e=>setWholesaleQty(Number(e.target.value))}/><small>units</small></div></label><label><span>CNY → LKR rate</span><div><b>Rs.</b><input type="number" min="0" step="0.01" value={cnyRate} onChange={e=>setCnyRate(Number(e.target.value))}/><small>per CNY</small></div></label><label><span>Shipping & logistics</span><div><b>Rs.</b><input type="number" min="0" step="1000" value={shippingCost} onChange={e=>setShippingCost(Number(e.target.value))}/><small>total</small></div></label><label><span>Duty & other fees</span><div><b>%</b><input type="number" min="0" step="1" value={importFees} onChange={e=>setImportFees(Number(e.target.value))}/><small>estimate</small></div></label><label><span>Wholesale margin</span><div><b>%</b><input type="number" min="0" step="1" value={wholesaleMargin} onChange={e=>setWholesaleMargin(Number(e.target.value))}/><small>margin</small></div></label></div><div className="calculator-result"><div className="result-label"><span>RECOMMENDED WHOLESALE PRICE</span><small>per unit</small></div><strong>Rs. {money(wholesaleUnitLkr)}</strong><div className="result-breakdown"><span><small>Goods value</small><b>Rs. {money(goodsValueLkr)}</b></span><span><small>Estimated fees</small><b>Rs. {money(feesValueLkr)}</b></span><span><small>Landed unit cost</small><b>Rs. {money(landedUnitLkr)}</b></span><span><small>MOQ quote total</small><b>Rs. {money(wholesaleOrderLkr)}</b></span></div><a href={chat(`Hi TONDEL, I need a China import wholesale quotation. Supplier price: ¥${cnyUnit} per unit. Quantity: ${safeQty}. Estimated landed unit cost: Rs. ${money(landedUnitLkr)}. Target wholesale price: Rs. ${money(wholesaleUnitLkr)}. Please confirm sourcing, shipping, duty and final bulk price.`)} target="_blank" rel="noopener noreferrer">Send calculation for a bulk quote <span>↗</span></a><p>Estimate only. Final bank rate, freight, customs classification and taxes may change the landed cost.</p></div></div></section>
     <section className="story" aria-label="TONDEL shopping experience">
       <div className="story-copy">
