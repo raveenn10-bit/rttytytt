@@ -404,6 +404,70 @@ const products = [
   }
 ];
 const categories = ["All", ...Array.from(new Set(products.map(p=>p.category)))];
+const catalogueDepartments = [
+  {no:"01",name:"Mobile Phones",kicker:"LATEST SMARTPHONES",image:"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1200&q=85",description:"Flagship, foldable and value smartphones from the world’s leading brands.",brands:"Apple · Samsung · Xiaomi · Redmi · POCO · vivo · OPPO · OnePlus · HONOR · Huawei · realme · Infinix · TECNO",groups:[
+    {title:"Apple iPhone",items:["iPhone 11–17 series","Pro & Pro Max","Plus models","iPhone Air","iPhone SE","Original Apple accessories"]},
+    {title:"Samsung Galaxy",items:["S series","Z Fold","Z Flip","A series","M series","F series","Galaxy Tab"]},
+    {title:"Xiaomi, Redmi & POCO",items:["Xiaomi flagships","Redmi Note","Redmi Number","Redmi A / C / K","POCO F / X / M"]},
+    {title:"vivo & iQOO",items:["X series","V series","Y series","S series","iQOO series"]},
+    {title:"More brands",items:["OPPO","OnePlus","HONOR","Huawei","realme","Infinix","TECNO"]}
+  ]},
+  {no:"02",name:"Laptops & Computers",kicker:"WORK. CREATE. PLAY.",image:"https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=1200&q=85",description:"Ultrabooks, business laptops, gaming machines, desktops and creator workstations.",brands:"Apple · ASUS · HP · Dell · Lenovo · Acer · MSI · Huawei · HONOR · Xiaomi",groups:[
+    {title:"Apple",items:["MacBook Air","MacBook Pro","iMac","Mac mini","Mac Studio"]},
+    {title:"ASUS",items:["VivoBook","ZenBook","ExpertBook","TUF Gaming","ROG"]},
+    {title:"HP",items:["Pavilion","ProBook","EliteBook","Envy","Spectre","Victus","Omen"]},
+    {title:"Dell",items:["Inspiron","Latitude","XPS","Precision","Vostro","Alienware"]},
+    {title:"Lenovo",items:["ThinkPad","IdeaPad","Yoga","Legion","LOQ"]},
+    {title:"Acer & others",items:["Aspire","Swift","TravelMate","Nitro","Predator","Huawei MateBook","HONOR MagicBook","RedmiBook","Xiaomi Book"]}
+  ]},
+  {no:"03",name:"Tablets & Smartwatches",kicker:"TECH THAT MOVES",image:"https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=1200&q=85",description:"Portable screens and wearables for productivity, fitness and everyday life.",brands:"Apple · Samsung · Xiaomi · Lenovo · Huawei · Amazfit",groups:[
+    {title:"Tablets",items:["Apple iPad","Samsung Galaxy Tab","Xiaomi Pad","Lenovo Tab","Huawei tablets"]},
+    {title:"Smartwatches",items:["Apple Watch","Samsung Watch","Huawei Watch","Amazfit","Fitness wearables"]}
+  ]},
+  {no:"04",name:"Printers & Scanners",kicker:"PRINT & PRODUCTIVITY",image:"https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?auto=format&fit=crop&w=1200&q=85",description:"Home, office, photo, receipt and large-format printing with genuine supplies.",brands:"Epson · Canon · HP · Brother · Pantum · Ricoh · Xerox · Kyocera · Fujifilm",groups:[
+    {title:"Epson range",items:["EcoTank L / M","WorkForce","Expression","Photo printers","A3 & large-format","Receipt & dot matrix","Scanners","Projectors"]},
+    {title:"Other brands",items:["Canon","HP","Brother","Pantum","Lenovo","Fujifilm","Kyocera","Ricoh","Xerox","Konica Minolta","Toshiba","G&G"]},
+    {title:"Printer supplies",items:["Original ink bottles","Ink & toner cartridges","Drum units","Print heads","Maintenance boxes","Waste ink pads","Cables","CISS","Sublimation ink & paper","Thermal rolls"]}
+  ]},
+  {no:"05",name:"CCTV & Security",kicker:"SMARTER PROTECTION",image:"https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=1200&q=85",description:"Complete surveillance, access control and smart security solutions.",brands:"Hikvision · Dahua · Uniview · Tiandy · EZVIZ · IMOU · Reolink · Xiaomi · Tapo",groups:[
+    {title:"Cameras",items:["HD analog","IP","Wi-Fi","PTZ","4G SIM","Solar","Color night vision","Thermal","Dome","Bullet","Turret","Doorbell"]},
+    {title:"Systems & accessories",items:["NVR / DVR","CCTV hard disks","PoE & network switches","Video door phones","Access control","Face recognition","Fingerprint attendance","Alarm systems","Monitors","Cables","Power & backup"]}
+  ]},
+  {no:"06",name:"DJI Drones & Accessories",kicker:"FLY. FILM. CREATE.",image:"https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=1200&q=85",description:"Consumer, enterprise and agricultural drones plus DJI imaging and audio.",brands:"DJI Mavic · Mini · Air · Neo · Flip · Matrice · Agras · Osmo · Ronin · Mic · Power",groups:[
+    {title:"Consumer drones",items:["Mavic","Mini","Air","Neo","Flip"]},
+    {title:"Enterprise",items:["Matrice","Matrice 4","Mavic 3 Enterprise","Matrice 350 RTK","Agras","DJI Dock","Zenmuse payloads"]},
+    {title:"Handheld imaging",items:["Osmo Pocket","Osmo Action","Osmo 360","Osmo Mobile","Osmo Nano"]},
+    {title:"Pro stabilization",items:["Ronin","RS","RSC","DJI Focus","Camera transmission"]},
+    {title:"DJI audio",items:["DJI Mic","Mic Mini","Mic 2","Transmitters","Receivers","Lavalier mics"]},
+    {title:"Parts & power",items:["Flight batteries","Charging hubs","Propellers","Controllers","ND filters","Lenses","Bags","Landing pads","Cases","Replacement parts","DJI Power"]}
+  ]},
+  {no:"07",name:"Insta360 & Action Cameras",kicker:"EVERY ANGLE. EVERY MOVE.",image:"https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=1200&q=85",description:"Immersive 360°, wearable and action-camera systems for creators.",brands:"Insta360 · GoPro · DJI Action",groups:[
+    {title:"Insta360 cameras",items:["X series","Ace series","GO series","ONE RS","Link webcams","Flow gimbals"]},
+    {title:"Creator accessories",items:["GPS preview remotes","Motorcycle accessories","Invisible selfie sticks","Mounts","Cases","Lens guards","Batteries","Charging hubs","Mics","Dive cases","Memory cards"]}
+  ]},
+  {no:"08",name:"Digital Cameras & Photography",kicker:"CAPTURE WITH INTENT",image:"https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1200&q=85",description:"Cameras, lenses and creator essentials for photography and video.",brands:"Canon · Sony · Nikon · Fujifilm · GoPro · DJI · Insta360",groups:[
+    {title:"Imaging",items:["Mirrorless cameras","DSLR cameras","Compact cameras","Action cameras","Webcams","Lenses"]},
+    {title:"Studio & field",items:["Tripods","Gimbals","Lighting","Microphones","Camera bags","Batteries","Chargers","Memory cards"]}
+  ]},
+  {no:"09",name:"Computer Accessories",kicker:"BUILD & UPGRADE",image:"https://images.unsplash.com/photo-1527814050087-3793815479db?auto=format&fit=crop&w=1200&q=85",description:"Components, peripherals and workspace upgrades for every setup.",brands:"Intel · AMD · NVIDIA · ASUS · Gigabyte · MSI · Kingston · Samsung · Crucial",groups:[
+    {title:"Components",items:["SSD & HDD","RAM","Graphics cards","Motherboards","Processors","Laptop batteries","Cooling fans"]},
+    {title:"Peripherals",items:["Monitors","Keyboards","Mice","Laptop chargers","Bags","Stands","USB hubs","Docking stations","HDD enclosures","HDMI / USB / network cables"]}
+  ]},
+  {no:"10",name:"Mobile Accessories",kicker:"POWER & PROTECT",image:"https://images.unsplash.com/photo-1609081219090-a6d81d3085bf?auto=format&fit=crop&w=1200&q=85",description:"Reliable charging, protection and connectivity for everyday devices.",brands:"Baseus · UGREEN · Anker · Hoco · Joyroom · Vention · Orico",groups:[
+    {title:"Charging & power",items:["Chargers","Fast-charge cables","Power banks","Wireless chargers","Car chargers"]},
+    {title:"Everyday accessories",items:["Phone cases","Screen protectors","Adapters","Hubs","Docks","Holders","Memory cards"]}
+  ]},
+  {no:"11",name:"Networking Equipment",kicker:"FAST. STABLE. CONNECTED.",image:"https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=1200&q=85",description:"Home, office and enterprise networking for strong, reliable connections.",brands:"TP-Link · Ruijie · Huawei · ZTE · Tenda · Mercusys · Ubiquiti",groups:[
+    {title:"Wi-Fi & routing",items:["Wi-Fi routers","4G / 5G routers","Mesh Wi-Fi","Access points","Range extenders"]},
+    {title:"Network infrastructure",items:["Managed switches","PoE switches","Network switches","Cables","Connectors","Adapters"]}
+  ]},
+  {no:"12",name:"Smart Home, Power & Business",kicker:"SMARTER SPACES",image:"https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=1200&q=85",description:"Smart living, backup power, office and POS tools in one complete department.",brands:"JBL · Edifier · Soundcore · Xiaomi · Aqara · Roborock · Dreame",groups:[
+    {title:"Smart home & cleaning",items:["Smart locks","Sensors","Bulbs","Switches","Robot cleaners","Vacuum cleaners"]},
+    {title:"Power products",items:["UPS","Power banks","Power stations","Solar generators","Batteries","Inverters"]},
+    {title:"Audio & gaming",items:["Headphones","Earbuds","Bluetooth speakers","PlayStation","Xbox","Gaming PCs","Controllers"]},
+    {title:"Office & POS",items:["Projectors","Scanners","Webcams","Shredders","Barcode scanners","Receipt printers","Cash drawers","Fingerprint machines"]}
+  ]}
+];
 const wa = "94777543984";
 
 export default function Home({ shopOnly = false }: { shopOnly?: boolean }) {
@@ -469,6 +533,7 @@ export default function Home({ shopOnly = false }: { shopOnly?: boolean }) {
       <aside className="hero-assurance"><div><b>▣</b><span>Islandwide<br/>Delivery</span></div><div><b>◇</b><span>1 Month<br/>Warranty*</span></div><div><b>◉</b><span>After-Sales<br/>Support</span></div></aside>
     </section>
     <section className="category-strip premium-categories" id="categories" aria-label="Shop by category"><div className="category-heading"><span>EXPLORE THE COLLECTION</span><a href="/shop">Shop all products →</a></div><div className="category-rail">{[...categories.slice(1),"All"].map(c=><button key={c} className={category===c&&shopOnly?"category-active":""} onClick={()=>choose(c)} aria-label={c==="All"?"Browse all products":"Browse "+c}><span className="cat-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{c==="All"?<><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></>:c==="Bluetooth Speakers"?<><rect x="6" y="2" width="12" height="20" rx="3"/><circle cx="12" cy="15" r="3"/><circle cx="12" cy="7" r="1"/></>:c==="Tablets"?<><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M17 11v2"/></>:<><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10 5h4M11 19h2"/></>}</svg></span><span className="category-copy"><strong>{c==="All"?"All Products":c==="Bluetooth Speakers"?"Speakers":c.replace(" Phones","")}</strong><small>{c==="All"?"Explore everything":c==="Tablets"?"Work & play":c==="Bluetooth Speakers"?"Wireless audio":"Smartphones"}</small></span><svg className="category-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></button>)}</div></section>
+    <section className={"department-showcase "+(shopOnly?"department-full":"")} id="catalogue"><div className="department-header"><div><p className="eyebrow">COMPLETE PRODUCT CATALOGUE</p><h2>{shopOnly?"Explore every department":"Everything tech. One trusted destination."}</h2><p>{shopOnly?"Browse the complete TONDEL product range by department, brand and product family.":"From smartphones and computers to drones, security and smart power."}</p></div>{!shopOnly&&<a href="/shop#catalogue">View complete catalogue <span>→</span></a>}</div><div className="department-grid">{catalogueDepartments.slice(0,shopOnly?catalogueDepartments.length:6).map(d=><article className="department-card" key={d.no}><div className="department-image"><img src={d.image} alt={d.name} loading="lazy" onError={e=>{e.currentTarget.onerror=null;e.currentTarget.src="/tondel-logo.png";}}/><span>{d.no}</span><div className="department-shade"/></div><div className="department-content"><small>{d.kicker}</small><h3>{d.name}</h3><p>{d.description}</p><div className="department-brands">{d.brands}</div>{shopOnly&&<div className="department-groups">{d.groups.map(g=><div key={g.title}><strong>{g.title}</strong><span>{g.items.join(" · ")}</span></div>)}</div>}<a href={chat("Hi TONDEL, I’m interested in "+d.name+". Please share availability and prices.")} target="_blank" rel="noopener noreferrer">Ask about this department <span>↗</span></a></div></article>)}</div></section>
     <section className="story" aria-label="TONDEL shopping experience">
       <div className="story-copy">
         <article className="story-step"><small>01 · DISCOVER</small><h2>Find tech that fits your life.</h2><p>Explore a curated range of smartphones, audio, wearables and everyday essentials.</p></article>
