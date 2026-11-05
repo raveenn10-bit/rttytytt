@@ -142,3 +142,27 @@ html body .retail-footer .footer-main{display:grid;grid-template-columns:1.5fr .
 @media(max-width:1050px){.department-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.department-full .department-card{grid-template-columns:190px 1fr}.department-full .department-image{min-height:480px}}
 @media(max-width:760px){.department-showcase{padding:40px 16px 18px}.department-header{align-items:flex-start;flex-direction:column;margin-bottom:20px}.department-header h2{font-size:34px}.department-grid,.department-full .department-grid{display:flex;overflow-x:auto;gap:13px;scroll-snap-type:x mandatory;padding:2px 2px 20px}.department-card,.department-full .department-card{display:block;flex:0 0 84%;max-width:340px;scroll-snap-align:start}.department-image,.department-full .department-image{height:190px;min-height:0}.department-content{padding:18px}.department-full .department-content{padding:18px}.department-groups{grid-template-columns:1fr}.department-content>p{min-height:0}}
 @media(prefers-reduced-motion:reduce){.department-card,.department-image img{transition:none}.department-card:hover{transform:none}}
+
+
+/* Wholesale-first sourcing calculator */
+.import-calculator{max-width:1224px;margin:42px auto 58px;padding:48px;display:grid;grid-template-columns:.82fr 1.18fr;gap:48px;background:linear-gradient(135deg,#0a0e14,#151c27);color:#fff;border:1px solid #28313d;border-radius:22px;box-shadow:0 28px 80px #070b1230;position:relative;overflow:hidden}
+.import-calculator:before{content:"¥";position:absolute;right:-28px;top:-75px;font-size:260px;font-weight:900;color:#ff761008;line-height:1;pointer-events:none}
+.calculator-intro{position:relative;z-index:1}.calculator-intro .eyebrow{color:#ff8a37}.calculator-intro h2{font-size:clamp(34px,4vw,54px);line-height:.98;letter-spacing:-.052em;margin:0;max-width:520px}.calculator-intro>p:not(.eyebrow){color:#aeb8c7;font-size:13px;line-height:1.8;margin:20px 0}
+.wholesale-points{display:grid;gap:9px;margin:27px 0}.wholesale-points span{display:flex;align-items:center;gap:12px;color:#dce2ea;font-size:11px}.wholesale-points b{display:grid;place-items:center;width:27px;height:27px;background:#ff761014;border:1px solid #ff813f45;color:#ff9a56;border-radius:8px;font-size:9px}
+.rate-note{display:block;padding:13px 14px;background:#ffffff07;border:1px solid #ffffff0f;border-radius:10px;color:#919dac;font-size:9px;line-height:1.65}
+.calculator-panel{position:relative;z-index:1;background:#fff;color:#10151c;border-radius:17px;padding:24px;box-shadow:0 20px 55px #0005}
+.calculator-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.calculator-fields label>span{display:block;margin:0 0 7px;color:#606a77;font-size:10px;font-weight:700}
+.calculator-fields label>div{height:47px;display:flex;align-items:center;border:1px solid #dce1e7;border-radius:9px;overflow:hidden;background:#f8fafc;transition:border-color .2s,box-shadow .2s}
+.calculator-fields label>div:focus-within{border-color:#ff7a24;box-shadow:0 0 0 3px #ff7a2415}
+.calculator-fields label b{padding-left:12px;color:#e45f08;font-size:11px;white-space:nowrap}
+.calculator-fields input{width:100%;height:100%;min-width:0;padding:0 8px;border:0;outline:0;background:transparent;color:#121820;font-weight:800}
+.calculator-fields label small{padding-right:10px;color:#8a929d;font-size:8px;white-space:nowrap}
+.calculator-result{margin-top:20px;padding:22px;background:linear-gradient(135deg,#111720,#202a38);border-radius:13px;color:#fff}
+.result-label{display:flex;align-items:center;justify-content:space-between;gap:15px;color:#ff9b58}.result-label span{font-size:9px;letter-spacing:.11em;font-weight:900}.result-label small{font-size:9px;color:#8f9aaa}
+.calculator-result>strong{display:block;font-size:clamp(32px,4vw,47px);letter-spacing:-.05em;margin:7px 0 18px}
+.result-breakdown{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.result-breakdown span{padding:10px;background:#ffffff07;border:1px solid #ffffff0a;border-radius:8px;display:flex;flex-direction:column;gap:4px}.result-breakdown small{font-size:8px;color:#8f9aaa}.result-breakdown b{font-size:11px}
+.calculator-result>a{display:flex;justify-content:space-between;align-items:center;margin-top:14px;padding:13px 15px;background:linear-gradient(135deg,#ff6810,#ff8b29);border-radius:9px;color:#fff;font-size:10px;font-weight:900}.calculator-result>a span{font-size:16px}.calculator-result>p{font-size:8px;line-height:1.5;color:#7f8b9a;margin:10px 0 0}
+.hero-pill{letter-spacing:.08em}.hero-specs span b{color:#ff8b36}.premium-hero .hero-buy strong{font-size:22px}
+@media(max-width:900px){.import-calculator{margin:32px 20px 46px;grid-template-columns:1fr;padding:36px;gap:30px}}
+@media(max-width:600px){.import-calculator{margin:25px 14px 38px;padding:25px 17px;border-radius:17px}.calculator-intro h2{font-size:36px}.calculator-panel{padding:16px}.calculator-fields{grid-template-columns:1fr 1fr;gap:10px}.calculator-fields label>div{height:44px}.result-breakdown{grid-template-columns:1fr 1fr}.calculator-result{padding:17px}.calculator-result>strong{font-size:35px}}
